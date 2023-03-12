@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from './Home';
+import {BrowserRouter  as Router, Routes, Route, Link} from 'react-router-dom';
 
 function App() { 
   return (
@@ -7,13 +7,10 @@ function App() {
       <Router>
          <Routes>
           <Route index element= {<Home/>}/>
-          
         </Routes>
       </Router>
-      
     </>
   );
 }
 
 export default App;
-// https://www.youtube.com/watch?v=MpQbwtSiZ7E
