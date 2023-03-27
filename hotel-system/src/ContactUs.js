@@ -1,17 +1,21 @@
 import './App.css';
 import React, {useState} from 'react';
 import Nav from './Nav';
+import { useNavigate } from 'react-router-dom';
 
 
 function ContactUs() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [inquiries, setInquiries] = useState("");
+    const navigate = useNavigate();
 
 function handleSubmit(e) {
     e.preventDefault();
     // Send the form data to the backend or do some other logic
     console.log(`Name: ${name}\nEmail: ${email}\nInquiries: ${inquiries}`);
+    window.alert('Thank you for your message! We will get back to you shortly.');
+    navigate("/");
   }
 
 
