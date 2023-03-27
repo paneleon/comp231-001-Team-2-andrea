@@ -2,6 +2,7 @@
 
 # Getting Started:
 
+This project was made using MERN stack.
 - Have 2 terminals open
 - In the main directory of one terminal, enter "cd hotel-system"
 - Run the command "npm start" to start the React application
