@@ -1,22 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import Nav from './Nav';
-
-function RoomBox(props) {
-    const { imgSrc, beds, price, description, amenities } = props;
-    return (
-      <div className='room-box'>
-        <img src={imgSrc} alt='room' />
-        <div className='room-details'>
-          <p>Beds: {beds}</p>
-          <p>Price: {price}</p>
-          <p>Description: {description}</p>
-          <p>Amenities: {amenities.join(', ')}</p>
-        </div>
-        <button className='view-room-button'>View Room</button>
-      </div>
-    );
-  }
+import {Link} from 'react-router-dom';
   
   function ViewRooms() {
     const [selectedBeds, setSelectedBeds] = useState('');
@@ -48,7 +33,7 @@ function RoomBox(props) {
     // sample room data
     const rooms = [
       {
-        imgSrc: 'https://via.placeholder.com/150',
+        imgSrc: 'https://media.istockphoto.com/id/627892060/photo/hotel-room-suite-with-view.jpg?s=612x612&w=0&k=20&c=YBwxnGH3MkOLLpBKCvWAD8F__T-ypznRUJ_N13Zb1cU=',
         beds: 1,
         price: '$100',
         description: 'Lorem ipsum dolor sit amet',
@@ -157,13 +142,17 @@ function RoomBox(props) {
       <div className='room-list'>
         {filteredRooms.map((room) => (
           <div className='room' key={room.id}>
-            <img src={room.image} alt={`Room ${room.id}`} />
+            <img src="https://media.istockphoto.com/id/627892060/photo/hotel-room-suite-with-view.jpg?s=612x612&w=0&k=20&c=YBwxnGH3MkOLLpBKCvWAD8F__T-ypznRUJ_N13Zb1cU=" alt={`Room ${room.id}`} />
             <h2>Room {room.id}</h2>
             <p>Beds: {room.beds}</p>
             <p>Price: ${room.price}/night</p>
             <p>{room.description}</p>
             <p>Amenities: {room.amenities.join(', ')}</p>
-            <button>View Room</button>
+            <Link to='/book-room'>
+              <div className='view-room'>
+                <button>View Room</button>
+              </div>
+            </Link>
           </div>
         ))}
       </div>

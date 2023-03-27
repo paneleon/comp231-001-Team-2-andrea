@@ -1,8 +1,5 @@
 import './App.css';
 import React from 'react';
-import ContactUs from './ContactUs';
-import ViewRooms from './ViewRooms';
-import MyProfile from './MyProfile';
 import Nav from './Nav';
 
 
