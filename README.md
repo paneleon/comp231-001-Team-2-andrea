@@ -1,4 +1,4 @@
-# Software Development Hotel Booking System 
+# Software Development Project - Hotel Booking System - Group 2
 
 # Getting Started:
 
