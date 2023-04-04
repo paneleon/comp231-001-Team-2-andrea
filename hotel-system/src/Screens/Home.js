@@ -1,6 +1,6 @@
-import './App.css';
+import '../App.css';
 import React from 'react';
-import Nav from './Nav';
+import Nav from '../Nav';
 
 
 function Home() {
@@ -21,5 +21,7 @@ function Home() {
         </>
     )
 }
+
+ 
 
 export default Home;
