@@ -188,27 +188,6 @@ function ViewRooms() {
           <h1>Error</h1>
         )}
       </div>
-      {/* <div className='room-list'> */}
-      {/* {filteredRooms.map((room) => ( */}
-      {/* {rooms.map(room=> (
-          <div className='room' key={room._id}>
-            <img src={room.image} />
-            <h2>Room {room._id}</h2>
-            <p>Room Type: {room.roomType}</p>
-            <p>{room.description}</p>
-            <p>Price: ${room.price}/night</p>
-            <p>Max Number of guests: {room.maxGuests}</p>
-            <p>{room.description}</p>
-            {/* <p>Amenities: {room.amenities.join(', ')}</p> */}
-      {/* <Link to={`/book-room/${room._id}`}> */}
-      {/* <Link to="book-room">
-              <div className='view-room'>
-                <button>Book Room</button>
-              </div>
-            </Link> */}
-      {/* </div> */}
-      {/* ))} */}
-      {/* </div> */}
     </>
   );
 }

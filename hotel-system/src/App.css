@@ -240,11 +240,54 @@ button:hover {
 
 /* ROOM.JS */
 
-.room-details {
-  width: 70%;
-  text-align: right;
-  height: 400px;
+.room-container {
+  display: flex;
+  margin: 10px 0;
 }
+
+
+
+.room-image {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.room-image img {
+  width: 70%;
+}
+
+.room-details {
+  flex: 2;
+}
+
+.room-details h2 {
+  margin-top: 0;
+}
+
+.room-details table {
+  border-collapse: collapse;
+  width: 60%;
+}
+
+.room-details table td {
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.room-details button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.room-details button:hover {
+  background-color: #0062cc;
+}
+
 
 
 /* IMG */
@@ -260,12 +303,60 @@ button:hover {
 
 
 /* BOOKROOM.JS */
-.booking-details {
+.bookroom-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.bookroom-main h3 {
+  margin-bottom: 20px;
+}
+
+.bookroom-main input[type="text"],
+.bookroom-main input[type="email"],
+.bookroom-main input[type="tel"],
+.bookroom-main input[type="number"],
+.bookroom-main input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.bookroom-main input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.bookroom-main input[type="submit"]:hover {
+  background-color: #0062cc;
+}
+
+.bookroom-main p {
+  margin: 10;
+}
+
+.img-form {
+  align-items: center;
+  text-align: center;
+}
+
+
+/* .booking-details {
   text-align: right;
 }
 
 .view-room {
   margin-bottom: 30px;
   align-items:center;
-}
+} */
 
