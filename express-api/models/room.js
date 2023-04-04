@@ -5,11 +5,7 @@ const roomSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  roomNumber: {
-    type: Number,
-    required:true
-  }
-  ,
+
   description: {
     type: String,
     required: true
@@ -25,7 +21,12 @@ const roomSchema = new mongoose.Schema({
 
   image: {
     type: String
-  }
+  },
+
+  //to check availability 
+  currentBookings: []
+} , {
+  timestamps: true,
 });
 
 module.exports = mongoose.model('Room', roomSchema);
