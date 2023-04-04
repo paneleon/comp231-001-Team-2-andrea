@@ -83,7 +83,8 @@ footer p {
   flex-direction: column;
   max-width: 460px;
   margin: 0 auto;
-  margin-top: 30px;  
+  margin-top: 30px; 
+
 }
 
 .contactdetails {
@@ -103,7 +104,7 @@ textarea {
   font-size: 16px;
   border: none;
   border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(125, 41, 41, 0.2);
 }
 
 input:focus,
@@ -121,6 +122,8 @@ button {
   color: #fff;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
+  width: 120px;
+  align-self: center;
 }
 
 button:hover {
@@ -260,3 +263,9 @@ button:hover {
 .booking-details {
   text-align: right;
 }
+
+.view-room {
+  margin-bottom: 30px;
+  align-items:center;
+}
+
