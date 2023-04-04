@@ -4,16 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../Components/Loader";
 
 function BookRoom() {
-  //   const [booking, setBooking] = useState({
-  //     guestName: '',
-  //     email: '',
-  //     phone: '',
-  //     numOfGuests: '',
-  //     checkInDate: '',
-  //     checkOutDate: '',
-  //     hasBreakfast: false,
-  //     totalCost: '',
-  //   });
 
   //personal information here
   const [guestName, setGuestName] = useState("");
@@ -52,31 +42,6 @@ function BookRoom() {
     fetchData();
   }, [id]);
 
-  //   const fetchData = async () => {};
-
-  //   useEffect(() => {
-  //     async function fetchRoom() {
-  //       console.log(`Fetching room with ID: ${roomId}`);
-  //       const response = await axios.get(`http://localhost:5000/rooms/${roomId}`);
-  //       const roomData = response.json();
-  //       setRoom(roomData);
-  //     }
-  //     fetchRoom();
-  //   }, [roomId]);
-
-  // useEffect(() => {
-  //     axios.get(`http://localhost:5000/rooms/${_id}`)
-  //     .then(res => setRoom(res.data))
-  //     .catch(err => console.error(err))
-  //   }, []);
-
-  // function handleChange(event) {
-  //   const { name, value } = event.target;
-  //   setBooking((prevBooking) => ({
-  //     ...prevBooking,
-  //     [name]: value,
-  //   }));
-  // }
 
     const handleSubmit = (event) => {
       event.preventDefault();
@@ -91,7 +56,6 @@ function BookRoom() {
 
   return (
     <>
-      {/* <form onSubmit={handleSubmit}> */}
       <p>Room ID: {id}</p>
       <div>
         {loading ? (
@@ -99,12 +63,12 @@ function BookRoom() {
         ) : room ? (
           <div>
             <div>
-              <div>
+              <div className="img-form">
                 <h3>{room.roomType}</h3>
                 <img src={room.image} />
               </div>
               {/* <div className="booking-details"> */}
-              <div style={{ textAlign: "right" }}>
+              <div className="bookroom-main">
                 <h3>Booking Details</h3>
                 <div>
                   <label htmlFor="guestName">Name:</label>
@@ -180,85 +144,7 @@ function BookRoom() {
           </div>
         ) : (<h3>Something went wrong, pelase try again later</h3>)}
       </div>
-      {/* <p>Room Name: {room.roomType}</p> */}
-      {/* <p>{room.roomType}</p> */}
-      {/* <div>
-        <label htmlFor="guestName">Guest Name:</label>
-        <input
-          type="text"
-          id="guestName"
-          name="guestName"
-          value={booking.guestName}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={booking.email}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="phone">Phone:</label>
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          value={booking.phone}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="numOfGuests">Number of Guests:</label>
-        <input
-          type="number"
-          id="numOfGuests"
-          name="numOfGuests"
-          value={booking.numOfGuests}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="checkInDate">Check In Date:</label>
-        <input
-          type="date"
-          id="checkInDate"
-          name="checkInDate"
-          value={booking.checkInDate}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="checkOutDate">Check Out Date:</label>
-        <input
-          type="date"
-          id="checkOutDate"
-          name="checkOutDate"
-          value={booking.checkOutDate}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="hasBreakfast">Add Breakfast:</label>
-        <input
-          type="checkbox"
-          id="hasBreakfast"
-          name="hasBreakfast"
-          checked={booking.hasBreakfast}
-          onChange={() =>
-            setBooking((prevBooking) => ({
-              ...prevBooking,
-              hasBreakfast: !prevBooking.hasBreakfast,
-            }))
-          }
-        />
-      </div> */}
-      {/* <button type="submit">Book Room</button>
-    </form> */}
+      
     </>
   );
 }
