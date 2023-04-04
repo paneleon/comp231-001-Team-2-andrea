@@ -1,6 +1,6 @@
-import './App.css';
+import '../App.css';
 import React, {useState} from 'react';
-import Nav from './Nav';
+import Nav from '../Nav';
 import { useNavigate } from 'react-router-dom';
 
 

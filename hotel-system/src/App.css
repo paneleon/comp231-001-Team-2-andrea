@@ -207,10 +207,6 @@ button:hover {
 }
 
 
-/* IMG */
-img{
-  width: 400px;
-}
 
 /* VIEW ROOM */
 .room-list {
@@ -230,6 +226,35 @@ img{
   margin-top: 30px;
   margin-left: 50px;
 }
+  
+.profilepage li span {
+  display: inline-block;
+}
 
 
 
+/* ROOM.JS */
+
+.room-details {
+  width: 70%;
+  text-align: right;
+  height: 400px;
+}
+
+
+/* IMG */
+/* .img{
+  width: 40px
+} */
+
+.room-image {
+  height: 50px;
+  width: 100px;
+  text-align: left;
+}
+
+
+/* BOOKROOM.JS */
+.booking-details {
+  text-align: right;
+}
