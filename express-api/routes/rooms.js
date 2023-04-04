@@ -4,9 +4,9 @@ const router = express.Router();
 const Room = require('../models/room');
 
 // Get all rooms
-router.get('/', async (req, res) => {
+router.get('/allrooms', async (req, res) => {
   try {
-    const rooms = await Room.find();
+    const rooms = await Room.find({});
     res.json(rooms);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -18,28 +18,40 @@ router.get('/:id', getRoom, (req, res) => {
   res.json(res.room);
 });
 
-// Create a new room
-router.post('/', async (req, res) => {
-  const room = new Room({
-    roomType: req.body.roomType,
-    roomNumber: req.body.roomNumber,
-    description: req.body.description,
-    price: req.body.price,
-    maxGuests: req.body.maxGuests,
-    imageUrl: req.body.imageUrl
-});
-    try {
-    const newRoom = await room.save();
-    res.status(201).json(newRoom);
-    } catch (err) {
-    res.status(400).json({ message: err.message });
-    }
-    });
+// // Create a new room
+// router.post('/', async (req, res) => {
+//   const room = new Room({
+//     roomType: req.body.roomType,
+//     description: req.body.description,
+//     price: req.body.price,
+//     maxGuests: req.body.maxGuests,
+//     imageUrl: req.body.imageUrl
+// });
+//     try {
+//       const newRoom = await room.save();
+//       res.status(201).json(newRoom);
+//     } catch (err) {
+//       res.status(400).json({ message: err.message });
+//     }
+//     });
+
+//sending the room ID (to create a booking)
+router.post("/getroombyid", async(req, res) => {
+  const roomId = req.body.roomId
+
+  try {
+    const room = await Room.findOne({_id: roomId})
+    res.json(room)
+  }
+  catch (error) {
+    return res.status(400).json({message: error});
+  }
+})
 
 // Update a room by ID
 router.patch('/:id', getRoom, async (req, res) => {
-    if (req.body.name != null) {
-        res.room.name = req.body.name;
+    if (req.body.roomType != null) {
+        res.room.roomType = req.body.roomType;
     }
     if (req.body.description != null) {
         res.room.description = req.body.description;
