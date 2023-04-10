@@ -10,4 +10,7 @@ This project was made using MERN stack.
 - Then run the express-api connection with "nodemon server.js"
 - The client will run on localhost:3000
 - The api will run on localhost:5000
+- Download MongoDB Compass to have access to the localhost database
+- Insert the document to see the list of rooms
 
+[rooms.txt](https://github.com/AndreaJDS/comp231-001-Team-2/files/11187439/rooms.txt)
