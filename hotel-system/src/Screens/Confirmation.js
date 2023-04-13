@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Nav from "../Nav";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -51,7 +50,6 @@ function Confirmation({ room }) {
 
   return (
     <>
-      <Nav />
       <div className="confirmation-page">
         <h2>Confirmation Page</h2>
         {/* <div className="booking-details">

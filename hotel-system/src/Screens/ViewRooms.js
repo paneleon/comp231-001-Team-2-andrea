@@ -1,6 +1,5 @@
 import "../App.css";
 import React, { useEffect, useState } from "react";
-import Nav from "../Nav";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Room from "./Room";
@@ -110,7 +109,6 @@ function ViewRooms() {
 
   return (
     <>
-      <Nav />
       {/* <div className='filter'>
         <div className='filter-select'>
           <select value={selectedBeds} onChange={handleBedsChange}>
