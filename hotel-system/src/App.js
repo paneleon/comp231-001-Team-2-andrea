@@ -1,4 +1,4 @@
-import Home from './Screens/Home';
+import Home from './Screens/Home/Home';
 import ContactUs from './Screens/ContactUs';
 import ViewRooms from './Screens/ViewRooms';
 import MyProfile from './Screens/MyProfile';
