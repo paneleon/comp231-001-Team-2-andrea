@@ -2,6 +2,10 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../Components/Loader";
+import moment from 'moment';
+import Nav from "../Nav";
+import Footer from "../Footer";
+
 
 function BookRoom() {
 
@@ -9,8 +13,8 @@ function BookRoom() {
   const [guestName, setGuestName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [checkInDate, setCheckInDate] = useState("");
-  const [checkOutDate, setCheckOutDate] = useState("");
+  // const [checkInDate, setCheckInDate] = useState("");
+  // const [checkOutDate, setCheckOutDate] = useState("");
   const [numOfGuests, setNumOfGuests] = useState("");
 
 
@@ -18,9 +22,18 @@ function BookRoom() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
   const [room, setRoom] = useState();
-  const { id } = useParams();
+  const { id, checkInDate, checkOutDate } = useParams();
+
+  const firstdate = moment(checkInDate , 'DD-MM-YYYY')
+  const lastdate = moment(checkOutDate , 'DD-MM-YYYY')
+  const totalDays = moment.duration(lastdate.diff(firstdate)).asDays()+1
+
+  const [totalAmount, setTotalAmount] = useState()
+
   const navigate = useNavigate();
 
+
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -30,6 +43,7 @@ function BookRoom() {
             roomId: id,
           })
         ).data;
+        setTotalAmount(data.price * totalDays)
         setRoom(data);
         setLoading(false);
         console.log(data);
@@ -45,7 +59,7 @@ function BookRoom() {
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      const data = {guestName, email, phone, checkInDate, checkOutDate, numOfGuests, room}
+      const data = {guestName, email, phone, numOfGuests, checkInDate, checkOutDate, roomId: room._id}
       axios.post(`http://localhost:5000/bookings`, data)
       .then(() => {
           navigate("/payment");
@@ -56,6 +70,7 @@ function BookRoom() {
 
   return (
     <>
+    <Nav/>
       <p>Room ID: {id}</p>
       <div>
         {loading ? (
@@ -111,7 +126,7 @@ function BookRoom() {
                     onChange={(e) => {setNumOfGuests (e.target.value)}}
                   />
                 </div>
-                <div>
+                {/* <div>
                   <label htmlFor="checkInDate">Check In Date:</label>
                   <input
                     type="date"
@@ -120,8 +135,8 @@ function BookRoom() {
                     value={checkInDate}
                     onChange={(e) => {setCheckInDate (e.target.value)}}
                   />
-                </div>
-                <div>
+                </div> */}
+                {/* <div>
                   <label htmlFor="checkOutDate">Check Out Date:</label>
                   <input
                     type="date"
@@ -130,21 +145,24 @@ function BookRoom() {
                     value={checkOutDate}
                     onChange={(e) => {setCheckOutDate (e.target.value)}}
                   />
-                </div>
+                </div> */}
+                <p>Check In Date: {checkInDate}</p>
+                <p>Check Out Date: {checkOutDate}</p>
+                <p>Total Days: {totalDays}</p>
                 <div style={{ textAlign: "right" }}>
                   <h3>Room Details</h3>
                   <p>Room Type: {room.roomType} </p>
                   <p>Max Guests: {room.maxGuests}</p>
                   <p>Price: ${room.price} per day</p>
-                  <p>Total Cost: </p>
+                  <p>Total Cost: ${totalAmount}</p>
                 </div>
-                <button type="submit" onClick={handleSubmit}>Pay Now</button>
+                <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Pay Now</button>
               </div>
             </div>
           </div>
-        ) : (<h3>Something went wrong, pelase try again later</h3>)}
+        ) : (<h3>Something went wrong, please try again later</h3>)}
       </div>
-      
+      <Footer/>
     </>
   );
 }
