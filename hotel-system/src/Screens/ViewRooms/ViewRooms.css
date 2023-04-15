@@ -1,3 +1,9 @@
+/* Header */
+
+.viewrooms-header-container {
+    text-align: center;
+}
+
 .room-list {
     text-align: left;
     margin-left: 50px;

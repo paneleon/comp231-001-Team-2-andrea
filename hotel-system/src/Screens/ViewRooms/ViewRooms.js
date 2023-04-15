@@ -110,6 +110,11 @@ function ViewRooms() {
   return (
     <>
       <div className="viewrooms-main-container">
+        <div className="viewrooms-header-container">
+          <h2>
+            Rooms
+          </h2>
+        </div>
         {/* <div className='filter'>
         <div className='filter-select'>
           <select value={selectedBeds} onChange={handleBedsChange}>
