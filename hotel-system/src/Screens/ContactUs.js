@@ -2,6 +2,7 @@ import '../App.css';
 import React, {useState} from 'react';
 import Nav from '../Nav';
 import { useNavigate } from 'react-router-dom';
+import Footer from '../Footer';
 
 
 function ContactUs() {
@@ -10,19 +11,18 @@ function ContactUs() {
     const [inquiries, setInquiries] = useState("");
     const navigate = useNavigate();
 
-function handleSubmit(e) {
-    e.preventDefault();
-    // Send the form data to the backend or do some other logic
-    console.log(`Name: ${name}\nEmail: ${email}\nInquiries: ${inquiries}`);
-    window.alert('Thank you for your message! We will get back to you shortly.');
-    navigate("/");
-  }
-
+    function handleSubmit(e) {
+        e.preventDefault();
+        // Send the form data to the backend or do some other logic
+        console.log(`Name: ${name}\nEmail: ${email}\nInquiries: ${inquiries}`);
+        window.alert('Thank you for your message! We will get back to you shortly.');
+        navigate("/");
+    }
 
     return (
         <>
         <Nav/>
-        <form className='contactform' onSubmit={handleSubmit}>
+        <form className='contactform' onSubmit={handleSubmit} style={{border: "1px solid black", padding: "20px"}}>
             <div>
                 <h2>Contact Us</h2>
                 <p>Email: abc@gmail.com</p>
@@ -58,8 +58,10 @@ function handleSubmit(e) {
                 required
             />
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" className="btn btn-primary">Submit</button>
         </form>
+        
+        <Footer/>
         </>
     )
 }

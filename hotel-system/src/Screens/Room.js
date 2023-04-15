@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from 'react-router-dom';
 import '../App.css'; // import the CSS file
 
-function Room({ room }) {
+function Room({ room, checkInDate, checkOutDate }) {
   return (
     <div className="room-container">
       <div className="room-image">
@@ -30,7 +30,7 @@ function Room({ room }) {
             </tr>
           </tbody>
         </table>
-        <Link to={`/book-room/${room._id}`}>
+        <Link to={`/rooms/${room._id}/${checkInDate}/${checkOutDate}`}>
           <button>Book Room</button>
         </Link>
       </div>

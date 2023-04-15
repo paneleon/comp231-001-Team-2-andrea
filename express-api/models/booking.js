@@ -22,19 +22,26 @@ const bookingSchema = new mongoose.Schema({
     //   required: true
     // },
 
-    numOfGuests: {
-      type: Number,
+    // numOfGuests: {
+    //   type: Number,
+    //   required: true
+    // },
+    room: {
+      type: String, 
+      required: true
+    },
+
+    roomid: {
+      type: String, 
       required: true
     },
 
     checkInDate: {
-      type: Date,
-      required: true
+      type: String,
     },
 
     checkOutDate: {
-      type: Date,
-      required: true
+      type: String,
     },
 
     // hasBreakfast: {
@@ -42,17 +49,29 @@ const bookingSchema = new mongoose.Schema({
     //   required: true
     // },
 
-    // totalCost: {
-    //   type: Number,
-    //   required: true
-    // },
-
-    room: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Room',
+    totalCost: {
+      type: Number,
       required: true
+    },
+
+    totalDays: {
+      type:Number,
+      required: true
+    },
+
+    status: {
+      type: String,
+      required: true, default: "booked"
     }
 
+    // room: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: 'Room',
+    //   // required: true
+    // }
+
+}, {
+    timestamps:true,
 });
 
 // bookingSchema
