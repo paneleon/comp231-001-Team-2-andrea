@@ -1,7 +1,7 @@
 import Home from './Screens/Home/Home';
-import ContactUs from './Screens/ContactUs';
+import ContactUs from './Screens/ContactUs/ContactUs';
 import ViewRooms from './Screens/ViewRooms/ViewRooms';
-import MyProfile from './Screens/MyProfile';
+import MyProfile from './Screens/MyProfile/MyProfile';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Payment from './Screens/Payment';
 import Confirmation from './Screens/Confirmation';

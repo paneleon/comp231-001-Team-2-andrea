@@ -8,58 +8,7 @@
 /* Migrated to Components/Footer/Footer.css */
 
 /* CONTACT US */
-.contactform {
-  display: flex;
-  flex-direction: column;
-  max-width: 460px;
-  margin: 0 auto;
-  margin-top: 30px;
-
-}
-
-.contactdetails {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-label {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-input,
-textarea {
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(125, 41, 41, 0.2);
-}
-
-input:focus,
-textarea:focus {
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-}
-
-button {
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-  width: 120px;
-  align-self: center;
-}
-
-button:hover {
-  background-color: #0062cc;
-}
-
+/* Migrated to Screen/ContactUs/ContactUs.css */
 
 /* PAYMENT PAGE */
 .paymentform {
@@ -73,75 +22,7 @@ button:hover {
 
 
 /* PROFILE */
-.profilepage {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  text-align: left;
-  border: 2px solid #ccc;
-}
-
-.profilepage h1 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-.profilepage h2 {
-  font-size: 24px;
-  margin-top: 40px;
-  margin-bottom: 20px;
-}
-
-.profilepage label {
-  font-weight: bold;
-  margin-right: 10px;
-}
-
-.profilepage span {
-  display: inline-block;
-  margin-bottom: 10px;
-}
-
-.profilepage button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #0077cc;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.profilepage button:hover {
-  background-color: #005fa3;
-}
-
-.profilepage ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.profilepage li {
-  margin-bottom: 20px;
-}
-
-.profilepage li div {
-  margin-bottom: 10px;
-}
-
-.profilepage li label {
-  width: 150px;
-  display: inline-block;
-  font-weight: bold;
-}
-
-.profilepage li span {
-  display: inline-block;
-}
-
-
+/* Migrated to Screen/MyProfile/MyProfile.css */
 
 /* VIEW ROOM */
 /* Migrated to Screens/ViewRooms/ViewRooms.css */
