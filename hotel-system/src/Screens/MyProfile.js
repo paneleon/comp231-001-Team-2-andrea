@@ -1,6 +1,7 @@
 import '../App.css';
 import React, {useState} from 'react';
 import Nav from '../Nav';
+import Footer from '../Footer';
 
 
 function MyProfile() {
@@ -92,6 +93,7 @@ function MyProfile() {
             </ul>
           ) : (<p>No bookings found.</p>)}
         </div>
+        <Footer />
         </>
       );
     }

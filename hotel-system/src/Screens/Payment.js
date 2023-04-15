@@ -1,6 +1,7 @@
 import React from "react";
 import Nav from "../Nav";
 import {Link} from "react-router-dom";
+import Footer from "../Footer";
 
 function Payment() {
 
@@ -34,9 +35,10 @@ function Payment() {
                 <input type="text" name="cvv" />
             </label>
         <Link to="/confirmation">
-            <button type="submit">Confirm Payment</button>
+            <button type="submit" className="btn btn-primary">Confirm Payment</button>
         </Link>
         </form>
+        <Footer/>
         </>
     )
 
