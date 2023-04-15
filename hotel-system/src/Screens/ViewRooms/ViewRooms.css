@@ -1,0 +1,26 @@
+.room-list {
+    text-align: left;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+
+.view-room {
+    margin-bottom: 30px;
+}
+
+.viewrooms-roomlist-room-container {
+    border: 5px;
+    border-color: black;
+}
+
+
+/* FILTER  */
+.filter {
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.profilepage li span {
+    display: inline-block;
+}

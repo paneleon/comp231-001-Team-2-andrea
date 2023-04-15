@@ -144,93 +144,10 @@ button:hover {
 
 
 /* VIEW ROOM */
-.room-list {
-  text-align: left;
-  margin-left: 50px;
-  margin-top: 20px;
-}
-
-
-.view-room {
-  margin-bottom: 30px;
-}
-
-
-/* FILTER  */
-.filter {
-  margin-top: 30px;
-  margin-left: 50px;
-}
-
-.profilepage li span {
-  display: inline-block;
-}
-
-
+/* Migrated to Screens/ViewRooms/ViewRooms.css */
 
 /* ROOM.JS */
-
-.room-container {
-  display: flex;
-  margin: 10px 0;
-}
-
-
-
-.room-image {
-  flex: 1;
-  margin-right: 10px;
-}
-
-.room-image img {
-  width: 70%;
-}
-
-.room-details {
-  flex: 2;
-}
-
-.room-details h2 {
-  margin-top: 0;
-}
-
-.room-details table {
-  border-collapse: collapse;
-  width: 60%;
-}
-
-.room-details table td {
-  padding: 5px;
-  border: 1px solid #ccc;
-}
-
-.room-details button {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.room-details button:hover {
-  background-color: #0062cc;
-}
-
-
-
-/* IMG */
-/* .img{
-  width: 40px
-} */
-
-.room-image {
-  height: 50px;
-  width: 100px;
-  text-align: left;
-}
-
+/* Migrated to Screens/Room/Room.css */
 
 /* BOOKROOM.JS */
 .bookroom-main {

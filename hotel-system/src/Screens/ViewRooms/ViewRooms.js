@@ -1,9 +1,9 @@
-import "../App.css";
+import "./ViewRooms.css";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Room from "./Room";
-import Loader from "../Components/Loader";
+import Room from "../Room/Room";
+import Loader from "../../Components/Loader";
 
 function ViewRooms() {
   // const [selectedBeds, setSelectedBeds] = useState('');
@@ -109,7 +109,8 @@ function ViewRooms() {
 
   return (
     <>
-      {/* <div className='filter'>
+      <div className="viewrooms-main-container">
+        {/* <div className='filter'>
         <div className='filter-select'>
           <select value={selectedBeds} onChange={handleBedsChange}>
             <option value='' hidden>Number of Beds</option>
@@ -168,24 +169,26 @@ function ViewRooms() {
         <button className='filter-button'>Filter</button>
       </div> */}
 
-      {/* Room List */}
-      <div>
-        {loading ? (
-          <h1>
-            <Loader />
-          </h1>
-        ) : rooms.length > 1 ? (
-          rooms.map((room) => {
-            return (
-              <div>
-                <Room room={room} />
-              </div>
-            );
-          })
-        ) : (
-          <h1>Error</h1>
-        )}
+        {/* Room List */}
+        <div className="viewrooms-roomlist-container">
+          {loading ? (
+            <h1>
+              <Loader />
+            </h1>
+          ) : rooms.length > 1 ? (
+            rooms.map((room) => {
+              return (
+                <div>
+                  <Room room={room} />
+                </div>
+              );
+            })
+          ) : (
+            <h1>Error</h1>
+          )}
+        </div>
       </div>
+
     </>
   );
 }

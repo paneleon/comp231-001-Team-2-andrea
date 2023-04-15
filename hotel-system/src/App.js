@@ -1,20 +1,15 @@
 import Home from './Screens/Home/Home';
 import ContactUs from './Screens/ContactUs';
-import ViewRooms from './Screens/ViewRooms';
+import ViewRooms from './Screens/ViewRooms/ViewRooms';
 import MyProfile from './Screens/MyProfile';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Payment from './Screens/Payment';
 import Confirmation from './Screens/Confirmation';
 import BookRoom from './Screens/BookRoom';
-import Footer from './Components/Footer/Footer'
-import Nav from './Components/Nav/Nav'
-import Header from './Components/Header/Header';
 
 function App() {
   return (
     <>
-      <Header />
-      <Nav />
       <Router>
         <Routes>
           <Route index element={<Home />} />
@@ -27,7 +22,6 @@ function App() {
           <Route path="/my-profile" element={<MyProfile />} />
         </Routes>
       </Router>
-      <Footer />
     </>
   );
 }
