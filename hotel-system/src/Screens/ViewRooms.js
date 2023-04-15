@@ -5,6 +5,13 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Room from "./Room";
 import Loader from "../Components/Loader";
+import { DatePicker, Space } from "antd";
+import moment from "moment";
+import { useStyleRegister } from "antd/es/theme/internal";
+import Footer from "../Footer";
+
+//added Antd date range picker
+const { RangePicker } = DatePicker;
 
 function ViewRooms() {
   // const [selectedBeds, setSelectedBeds] = useState('');
@@ -14,6 +21,19 @@ function ViewRooms() {
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState();
   const [error, setError] = useState();
+
+  //adding date values
+  const [checkInDate, setCheckInDate] = useState();
+  const [checkOutDate, setCheckOutDate] = useState();
+
+  function filterByDate(dates) {
+    //from date
+    console.log(dates[0].format("DD-MM-YYYY"));
+    setCheckInDate(dates[0].format("DD-MM-YYYY"));
+    //to date
+    console.log(dates[1].format("DD-MM-YYYY"));
+    setCheckOutDate(dates[1].format("DD-MM-YYYY"));
+  }
 
   useEffect(() => {
     fetchData();
@@ -33,80 +53,6 @@ function ViewRooms() {
     }
   };
 
-  //   axios.get(`http://localhost:5000/rooms`)
-  //   .then(res => setRooms(res.data))
-  //   .catch(err => console.error(err))
-  // }, []);
-
-  // const handleBedsChange = (event) => {
-  //   setSelectedBeds(event.target.value);
-  // };
-
-  // const handlePriceChange = (event) => {
-  //   setSelectedPrice(event.target.value);
-  // };
-
-  // const handleAmenitiesChange = (event) => {
-  //   const selectedAmenity = event.target.value;
-  //   if (selectedAmenities.includes(selectedAmenity)) {
-  //     setSelectedAmenities((prevSelectedAmenities) =>
-  //       prevSelectedAmenities.filter((amenity) => amenity !== selectedAmenity)
-  //     );
-  //   } else {
-  //     setSelectedAmenities((prevSelectedAmenities) => [
-  //       ...prevSelectedAmenities,
-  //       selectedAmenity,
-  //     ]);
-  //   }
-  // };
-
-  // sample room data
-  // const rooms = [
-  //   {
-  //     imgSrc: 'https://media.istockphoto.com/id/627892060/photo/hotel-room-suite-with-view.jpg?s=612x612&w=0&k=20&c=YBwxnGH3MkOLLpBKCvWAD8F__T-ypznRUJ_N13Zb1cU=',
-  //     beds: 1,
-  //     price: '$100',
-  //     description: 'Lorem ipsum dolor sit amet',
-  //     amenities: ['pool', 'gym'],
-  //   },
-  //   {
-  //     imgSrc: 'https://via.placeholder.com/150',
-  //     beds: 2,
-  //     price: '$200',
-  //     description: 'Lorem ipsum dolor sit amet',
-  //     amenities: ['pool', 'spa'],
-  //   },
-  //   {
-  //     imgSrc: 'https://via.placeholder.com/150',
-  //     beds: 3,
-  //     price: '$300',
-  //     description: 'Lorem ipsum dolor sit amet',
-  //     amenities: ['gym', 'spa'],
-  //   },
-  // ];
-
-  // filter rooms based on selected options
-  // const filteredRooms = rooms.filter((room) => {
-  //   if (selectedBeds && room.beds !== parseInt(selectedBeds)) {
-  //     return false;
-  //   }
-  //   if (selectedPrice) {
-  //     const [minPrice, maxPrice] = selectedPrice.split('-');
-  //     const roomPrice = parseInt(room.price.slice(1));
-  //     if (roomPrice < minPrice || roomPrice > maxPrice) {
-  //       return false;
-  //     }
-  //   }
-  //   if (selectedAmenities.length) {
-  //     const hasSelectedAmenities = selectedAmenities.every((amenity) =>
-  //       room.amenities.includes(amenity)
-  //     );
-  //     if (!hasSelectedAmenities) {
-  //       return false;
-  //     }
-  //   }
-  //   return true;
-  // });
 
   return (
     <>
@@ -171,7 +117,13 @@ function ViewRooms() {
       </div> */}
 
       {/* Room List */}
-      <div>
+      <div className="row mt-4 justify-content-center">
+        <div className="col-md-5" style={{ width: "auto" }}>
+          <RangePicker format="DD-MM-YYYY" onChange={filterByDate} />
+        </div>
+      </div>
+
+      <div className="row justify-content-center mt-5">
         {loading ? (
           <h1>
             <Loader />
@@ -179,8 +131,12 @@ function ViewRooms() {
         ) : rooms.length > 1 ? (
           rooms.map((room) => {
             return (
-              <div>
-                <Room room={room} />
+              <div className="col-md-9 mt-3">
+                <Room
+                  room={room}
+                  checkInDate={checkInDate}
+                  checkOutDate={checkOutDate}
+                />
               </div>
             );
           })
@@ -188,6 +144,7 @@ function ViewRooms() {
           <h1>Error</h1>
         )}
       </div>
+      <Footer />
     </>
   );
 }
