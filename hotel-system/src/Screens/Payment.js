@@ -1,47 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "../Nav";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Footer from "../Footer";
 
 function Payment() {
 
-    return(
-        <>
-        <Nav/>
-        <form className="paymentform">
-            <h2>Type of Card:</h2>
-            <label>
-                <input type="radio" name="cardType" value="visa" checked />
-                Visa
-                <input type="radio" name="cardType" value="mastercard" />
-                Mastercard
-            </label>
+  const [cardType, setCardType] = useState("visa");
+  const [cardName, setCardName] = useState("");
+  const [expirationDate, setExpirationDate] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [cvv, setCvv] = useState("");
 
-            <h2>Card Information:</h2>
-            <label>
-                Name on Card:
-                <input type="text" name="cardName" />
-            </label>
-            <label>
-                Expiration Date:
-                <input type="text" name="expirationDate" placeholder="MM/YY" />
-            </label>
-            <label>
-                Card Number:
-                <input type="text" name="cardNumber" />
-            </label>
-            <label>
-                CVV:
-                <input type="text" name="cvv" />
-            </label>
-        <Link to="/confirmation">
-            <button type="submit" className="btn btn-primary">Confirm Payment</button>
+  function handleSubmit() {
+    window.alert("Booking Successful!");
+  }
+
+  return (
+    <>
+      <Nav />
+      <form className="paymentform">
+        <h2>Type of Card:</h2>
+        <label>
+          <input
+            type="radio"
+            name="cardType"
+            value="visa"
+            checked={cardType === "visa"}
+            onChange={(e) => setCardType(e.target.value)}
+          />
+          Visa
+          <input
+            type="radio"
+            name="cardType"
+            value="mastercard"
+            checked={cardType === "mastercard"}
+            onChange={(e) => setCardType(e.target.value)}
+          />
+          Mastercard
+        </label>
+
+        <h2>Card Information:</h2>
+        <label>
+          Name on Card:
+          <input type="text" name="cardName" value={cardName} onChange={(e) => setCardName(e.target.value)} />
+        </label>
+        <label>
+          Expiration Date:
+          <input
+            type="text"
+            name="expirationDate"
+            placeholder="MM/YY"
+            value={expirationDate}
+            onChange={(e) => setExpirationDate(e.target.value)}
+          />
+        </label>
+        <label>
+          Card Number:
+          <input type="text" name="cardNumber" value={cardNumber} onChange={(e) => setCardNumber(e.target.value)} />
+        </label>
+        <label>
+          CVV:
+          <input type="text" name="cvv" value={cvv} onChange={(e) => setCvv(e.target.value)} />
+        </label>
+        <Link to="/my-profile">
+          <button type="submit" onClick={handleSubmit} className="btn btn-primary">
+            Confirm Payment
+          </button>
         </Link>
-        </form>
-        <Footer/>
-        </>
-    )
-
+      </form>
+      <Footer />
+    </>
+  );
 }
 
 export default Payment;
