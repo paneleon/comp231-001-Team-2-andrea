@@ -1,100 +1,184 @@
-import '../App.css';
-import React, {useState} from 'react';
-import Nav from '../Nav';
-import Footer from '../Footer';
+import "../App.css";
+import React, { useEffect, useState } from "react";
+import Nav from "../Nav";
+import Footer from "../Footer";
+import Loader from "../Components/Loader";
+import axios from "axios";
+import { Tabs, Table } from "antd";
+import { useParams } from "react-router-dom";
 
+const { TabPane } = Tabs;
 
-function MyProfile() {
-    const [firstName, setFirstName] = useState('John');
-    const [lastName, setLastName] = useState('Doe');
-    const [email, setEmail] = useState('johndoe@gmail.com');
-    const [phone, setPhone] = useState('+1234567890');
-    const [country, setCountry] = useState('United States');
-    const [address, setAddress] = useState('123 Main St');
-    const [city, setCity] = useState('New York');
-    const [bookings, setBookings] = useState([
-        {
-          id: 1,
-          checkInDate: '2022-04-15',
-          checkOutDate: '2022-04-20',
-          roomType: 'Double Room',
-          status: 'Confirmed',
-        },
-        {
-          id: 2,
-          checkInDate: '2022-05-10',
-          checkOutDate: '2022-05-14',
-          roomType: 'Suite',
-          status: 'Pending',
-        },
-      ]);
-    
-      const handleEdit = () => {
-        // Handle edit button click
-      };
-    
-      return (
-        <>
-        <Nav/>
-        <div className='profilepage'>
-          <h1>Profile</h1>
-          <div>
-            <label>First Name:</label>
-            <span>{firstName}</span>
-          </div>
-          <div>
-            <label>Last Name:</label>
-            <span>{lastName}</span>
-          </div>
-          <div>
-            <label>Email:</label>
-            <span>{email}</span>
-          </div>
-          <div>
-            <label>Phone:</label>
-            <span>{phone}</span>
-          </div>
-          <div>
-            <label>Country:</label>
-            <span>{country}</span>
-          </div>
-          <div>
-            <label>Address:</label>
-            <span>{address}</span>
-          </div>
-          <div>
-            <label>City:</label>
-            <span>{city}</span>
-          </div>
-          <button onClick={handleEdit}>Edit</button>
-          <h2>Bookings</h2>
-          {bookings.length > 0 ? (
-            <ul>
-              {bookings.map((booking) => (
-                <li key={booking.id}>
-                  <div>
-                    <label>Check-in Date:</label>
-                    <span>{booking.checkInDate}</span>
-                  </div>
-                  <div>
-                    <label>Check-out Date:</label>
-                    <span>{booking.checkOutDate}</span>
-                  </div>
-                  <div>
-                    <label>Room Type:</label>
-                    <span>{booking.roomType}</span>
-                  </div>
-                  <div>
-                    <label>Status:</label>
-                    <span>{booking.status}</span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          ) : (<p>No bookings found.</p>)}
-        </div>
-        <Footer />
-        </>
-      );
+function MyProfile({userId}) {
+  const {id} = useParams();
+
+  const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const getBookings = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/bookings", {
+          params: { guestName: userId }
+      });
+        setBookings(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        setError(true);
+        setLoading(false);
+      }
     }
+
+    getBookings();
+  }, [userId]);
+
+  const columns = [
+    {
+      title: 'Guest Name',
+      dataIndex: 'guestName',
+      key: 'guestName',
+    },
+    {
+      title: 'Email',
+      dataIndex: 'email',
+      key: 'email',
+    },
+    {
+      title: 'Phone No.',
+      dataIndex: 'phone',
+      key: 'phone',
+    }
+  ];
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <p>Something went wrong, please try again later.</p>;
+  }
+
+  return (
+    <>
+      <Nav />
+      <div className="my-profile mt-3 ml-3">
+        <Tabs defaultActiveKey="1">
+          <TabPane tab="Profile" key="1">
+            <Table dataSource={bookings} columns={columns} />
+          </TabPane>
+          <TabPane tab="Bookings" key="2">
+            <MyBookings userId={id} />
+          </TabPane>
+        </Tabs>
+      </div>
+      <Footer />
+    </>
+  );
+}
+
 export default MyProfile;
+
+function MyBookings({ userId }) {
+  const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const getBookings = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/bookings", {
+          params: { guestName: userId }
+      });
+        setBookings(response.data);
+        console.log(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        setError(true);
+        setLoading(false);
+      }
+    }
+
+    getBookings();
+  }, [userId]);
+
+
+  async function cancelBooking(bookingId, roomid) {
+    try {
+      // setLoading(true);
+      const result = await axios.post("http://localhost:5000/bookings/cancelbooking", {
+        bookingId,
+        roomid,
+      });
+      console.log(result.data);
+      setLoading(false);
+      window.alert("Booking cancelled successfully!");
+      window.location.reload()
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  }
+
+  const columns = [
+    {
+      title: 'Room',
+      dataIndex: 'room',
+      key: 'room',
+    },
+    {
+      title: 'Check-In Date',
+      dataIndex: 'checkInDate',
+      key: 'checkInDate',
+    },
+    {
+      title: 'Check-out Date',
+      dataIndex: 'checkOutDate',
+      key: 'checkOutDate',
+    },
+    {
+      title: 'Total Days',
+      dataIndex: 'totalDays',
+      key: 'totalDays',
+    },
+   
+    {
+      title: 'Total Amount',
+      dataIndex: 'totalAmount',
+      key: 'totalAmount',
+      render: (value) => `$${value}`
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      key: 'status',
+    },
+    {
+      
+      key: 'action',
+      render: (_text, booking) => (
+        booking.status !== "Cancelled" && (
+          <button className="btn btn-primary" onClick={() => {cancelBooking(booking._id, booking.roomid)}}> Cancel Booking</button>
+        )
+      )
+      
+    },
+    
+  ];
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <p>Something went wrong, please try again later.</p>;
+  }
+
+  return (
+    <>
+      <Table dataSource={bookings} columns={columns} />
+    </>
+  )
+}
