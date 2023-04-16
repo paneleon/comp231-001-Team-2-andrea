@@ -5,7 +5,7 @@ import Footer from "../Footer";
 import Loader from "../Components/Loader";
 import axios from "axios";
 import { Tabs, Table } from "antd";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const { TabPane } = Tabs;
 
@@ -84,6 +84,8 @@ function MyBookings({ userId }) {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [recipient, setRecipient] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getBookings = async () => {
@@ -119,6 +121,22 @@ function MyBookings({ userId }) {
     } catch (error) {
       console.log(error);
       setLoading(false);
+    }
+  }
+
+  //send email receipt
+    function handleRecipientChange(e) {
+    setRecipient(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (recipient) {
+      window.alert("Receipt sent!");
+      navigate("/");
+    } else {
+      window.alert("Please enter an email for your receipt to be sent.");
     }
   }
 
@@ -179,6 +197,21 @@ function MyBookings({ userId }) {
   return (
     <>
       <Table dataSource={bookings} columns={columns} />
+      <div>
+          <p>
+            Send to recipient:
+            <input
+              type="text"
+              name="recipient"
+              value={recipient}
+              placeholder="abc@gmail.com"
+              onChange={handleRecipientChange}
+            ></input>
+          </p>
+          <button className="btn btn-primary" value="Submit" onClick={handleSubmit}>
+            Send
+          </button>
+        </div>
     </>
   )
 }
