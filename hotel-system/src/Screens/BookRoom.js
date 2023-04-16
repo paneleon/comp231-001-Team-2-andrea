@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import Loader from "../Components/Loader";
 import moment from "moment";
-import Nav from "../Nav";
-import Footer from "../Footer";
+import Nav from "../Components/Nav/Nav";
+import Footer from "../Components/Footer/Footer";
 
 function BookRoom() {
   //personal information here

@@ -1,8 +1,8 @@
 import '../App.css';
 import React, {useState} from 'react';
-import Nav from '../Nav';
+import Nav from '../Components/Nav/Nav';
 import { useNavigate } from 'react-router-dom';
-import Footer from '../Footer';
+import Footer from '../Components/Footer/Footer';
 
 
 function ContactUs() {

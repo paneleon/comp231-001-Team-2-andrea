@@ -1,12 +1,12 @@
 import "../App.css";
 import React, { useEffect, useState } from "react";
-import Nav from "../Nav";
+import Nav from "../Components/Nav/Nav";
 import axios from "axios";
 import Room from "./Room";
 import Loader from "../Components/Loader";
 import { DatePicker, Space } from "antd";
 import moment from "moment";
-import Footer from "../Footer";
+import Footer from "../Components/Footer/Footer";
 
 //added Antd date range picker
 const { RangePicker } = DatePicker;
