@@ -1,13 +1,14 @@
 // routes/bookings.js
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Booking = require('../models/booking');
-const Room = require('../models/room');
+const Booking = require("../models/booking");
+const Room = require("../models/room");
+const moment = require("moment");
 
 // Get all bookings
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const bookings = await Booking.find()
+    const bookings = await Booking.find();
     res.json(bookings);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -15,102 +16,116 @@ router.get('/', async (req, res) => {
 });
 
 // Get a specific booking by ID
-router.get('/:id', getBooking, async (req, res) => {
+router.get("/:id", getBooking, async (req, res) => {
   try {
-    const booking = await Booking.findById(req.params.id).populate('room');
+    const booking = await Booking.findById(req.params.id).populate("room");
     res.json(booking);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
-// Create a new booking
-router.post('/', async (req, res) => {
-  const booking = new Booking({
-    guestName: req.body.guestName,
-    email: req.body.email,
-    phone: req.body.phone,
-    numOfGuests: req.body.numOfGuests,
-    checkInDate: req.body.checkInDate,
-    checkOutDate: req.body.checkOutDate,
-    hasBreakfast: req.body.hasBreakfast,
-    totalCost: req.body.totalCost,
-    room: req.body.room // this should be the ID of the corresponding room document
-  });
+
+router.post("/bookroom", async (req, res) => {
+  const {
+    guestName,
+    email,
+    phone,
+    checkInDate,
+    checkOutDate,
+    totalAmount,
+    totalDays,
+    room,
+  } = req.body;
 
   try {
-    const newBooking = await booking.save();
-    // Populate the room document
-    // await newBooking.populate('room').execPopulate();
-    res.status(201).json(newBooking);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
+    const newBooking = new Booking({
+      guestName: req.body.guestName,
+      email: req.body.email,
+      phone: req.body.phone,
+      checkInDate,
+      checkOutDate,
+      totalAmount,
+      totalDays,
+      room: room.roomType,
+      roomid: room._id, // this should be the ID of the corresponding room document
+    });
+
+    const booking = await newBooking.save();
+
+    //update currentBookings[]
+    const roomTemp = await Room.findOne({ _id: room._id });
+    roomTemp.currentBookings.push({
+      bookingId: booking._id,
+      checkInDate: checkInDate,
+      checkOutDate: checkOutDate,
+      status: booking.status
+    });
+    //updating after pushing current bookings
+    await roomTemp.save()
+
+    res.send("Room booked successfully!");
+  } catch (error) {
+    res.status(400).json({ error });
   }
 });
 
-// Update a booking by ID
-router.patch('/:id', getBooking, async (req, res) => {
-  if (req.body.guestName != null) {
-    res.booking.guestName = req.body.guestName;
-  }
-  if (req.body.email != null) {
-    res.booking.email = req.body.email;
-  }
-  if (req.body.phone != null) {
-    res.booking.phone = req.body.phone;
-  }
-  if (req.body.numOfGuests != null) {
-    res.booking.numOfGuests = req.body.numOfGuests;
-  }
-  if (req.body.checkInDate != null) {
-    res.booking.checkInDate = req.body.checkInDate;
-  }
-  if (req.body.checkOutDate != null) {
-    res.booking.checkOutDate = req.body.checkOutDate;
-  }
-  if (req.body.hasBreakfast != null) {
-    res.booking.hasBreakfast = req.body.hasBreakfast;
-  }
-  if (req.body.totalCost != null) {
-    res.booking.totalCost = req.body.totalCost;
-  }
-  if (req.body.room != null) {
-    res.booking.room = req.body.room;
-  }
 
-  try {
-    const updatedBooking = await res.booking.save();
-    // Populate the room document
-    await updatedBooking.populate('room').execPopulate();
-    res.json(updatedBooking);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
+router.post("/getbookingsbyuser", async(req, res) => {
+  const guestName = req.body.guestName;
+
+  try{
+    const bookings = await Booking.find({guestName: guestName})
+    res.send(bookings)
+
+  } catch (error) {
+    res.status(400).json({ error });
   }
 });
 
-// Delete a booking by ID
-router.delete('/:id', getBooking, async (req, res) => {
-  try {
-    await res.booking.remove();
-    res.json({ message: 'Booking deleted' });
-  } catch (err) {
-    
-    res.status(400).json({ message: err.message });
-}
-});
+
+//cancel booking
+router.post("/cancelbooking", async(req, res) => {
+  const {bookingId, roomid} = req.body
+  console.log("bookingId:", bookingId);
+  console.log("roomId:", roomid);
+  try{
+
+    //find booking and cancel it, then set status to cancelled
+    const bookingItem = await Booking.findOne({_id: bookingId})
+    console.log("bookingItem:", bookingItem);
+    bookingItem.status = "Cancelled"
+    await bookingItem.save()
+
+    //update the rooms availability
+    const room = await Room.findOne({_id: roomid})
+    console.log("room:", room);
+    const bookings = room.currentBookings
+    const tempBookings = bookings.filter(booking => booking.bookingId.toString() !== bookingId)
+    room.currentBookings = tempBookings
+
+    await room.save()
+    res.send("Booking cancelled successfully!")
+  }
+  catch(error) {
+    console.log(error);
+    res.status(400).json({ error });
+  }
+})
+
 
 // Middleware function to get a specific booking by ID
 async function getBooking(req, res, next) {
-    try {
+  try {
     const booking = await Booking.findById(req.params.id);
     if (booking == null) {
-    return res.status(404).json({ message: 'Booking not found' });
+      return res.status(404).json({ message: "Booking not found" });
     }
     res.booking = booking;
     next();
-    } catch (err) {
+  } catch (err) {
     res.status(500).json({ message: err.message });
-    }
-    }
-    
+  }
+}
+
 module.exports = router;
