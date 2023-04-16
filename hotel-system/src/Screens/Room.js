@@ -1,6 +1,6 @@
 import React from "react";
-import {Link} from 'react-router-dom';
-import '../App.css'; // import the CSS file
+import { Link } from "react-router-dom";
+import "../App.css";
 
 function Room({ room, checkInDate, checkOutDate }) {
   return (
@@ -30,9 +30,12 @@ function Room({ room, checkInDate, checkOutDate }) {
             </tr>
           </tbody>
         </table>
-        <Link to={`/rooms/${room._id}/${checkInDate}/${checkOutDate}`}>
-          <button>Book Room</button>
-        </Link>
+
+        {checkInDate && checkOutDate && (
+          <Link to={`/rooms/${room._id}/${checkInDate}/${checkOutDate}`}>
+            <button>Book Room</button>
+          </Link>
+        )}
       </div>
     </div>
   );
