@@ -18,22 +18,6 @@ router.get('/:id', getRoom, (req, res) => {
   res.json(res.room);
 });
 
-// // Create a new room
-// router.post('/', async (req, res) => {
-//   const room = new Room({
-//     roomType: req.body.roomType,
-//     description: req.body.description,
-//     price: req.body.price,
-//     maxGuests: req.body.maxGuests,
-//     imageUrl: req.body.imageUrl
-// });
-//     try {
-//       const newRoom = await room.save();
-//       res.status(201).json(newRoom);
-//     } catch (err) {
-//       res.status(400).json({ message: err.message });
-//     }
-//     });
 
 //sending the room ID (to create a booking)
 router.post("/getroombyid", async(req, res) => {

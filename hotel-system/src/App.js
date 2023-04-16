@@ -9,6 +9,7 @@ import BookRoom from './Screens/BookRoom';
 import 'antd/dist/reset.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
+
 function App() { 
   return (
     <>
@@ -17,7 +18,6 @@ function App() {
           <Route index element= {<Home/>}/>
           <Route path="/contact-us" element={<ContactUs/>} />
           <Route path="/view-rooms" element={<ViewRooms/>} />
-          {/* <Route path="/book-room" element={<BookRoom/>}/> */}
           <Route path="/rooms/:id/:checkInDate/:checkOutDate" element={<BookRoom/>}/>
           <Route path="/payment" element={<Payment/>} />
           <Route path="/confirmation" element={<Confirmation/>} />
