@@ -1,6 +1,8 @@
-import './ContactUs.css';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
+import Nav from '../../Components/Nav/Nav';
 import { useNavigate } from 'react-router-dom';
+import Footer from '../../Components/Footer/Footer';
+import './ContactUs.css';
 
 
 function ContactUs() {
@@ -20,6 +22,7 @@ function ContactUs() {
 
     return (
         <>
+        <Nav/>
             <div className='contactus-main-container'>
                 <div className='contactus-header-container'>
                     <h2>Contact Us</h2>
@@ -27,7 +30,6 @@ function ContactUs() {
                 <div className='contactus-contactform-container'>
                     <form className='contactform' onSubmit={handleSubmit}>
                         <div>
-
                             <p>Email: abc@gmail.com</p>
                             <p>Phone: +14372773737</p>
                             <p>Or fill in the form and we will get back to you.</p>
