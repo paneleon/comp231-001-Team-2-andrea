@@ -1,0 +1,78 @@
+
+/* BOOKROOM.JS */
+.bookroom-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .bookroom-main input[type="text"],
+  .bookroom-main input[type="email"],
+  .bookroom-main input[type="tel"],
+  .bookroom-main input[type="number"],
+  .bookroom-main input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .bookroom-main input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .bookroom-main input[type="submit"]:hover {
+    background-color: #0062cc;
+  }
+  
+  .bookroom-main p {
+    margin: 10;
+  }
+  
+  .img-form {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .bookroom-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+  .img-container {
+    flex-basis: 60%;
+    text-align: center;
+  }
+
+  .h3, h3 {
+    margin-top: 40px !important;
+  }
+
+  .img-container img {
+    width: 70%;
+    height: auto;
+  }
+  .form-container {
+    flex-basis: 40%;
+    padding: 1em;
+    box-sizing: border-box;
+  }
+  .form-container h4 {
+    margin-top: 40px;
+  }
+  .form-container div {
+    margin-bottom: 1em;
+  }
+  .form-container label {
+    display: block;
+    margin-bottom: 0.5em;
+  }

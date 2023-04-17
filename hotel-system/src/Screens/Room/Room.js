@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../App.css";
+import './Room.css';
 
 function Room({ room, checkInDate, checkOutDate }) {
   return (
@@ -9,7 +9,6 @@ function Room({ room, checkInDate, checkOutDate }) {
         <img src={room.image} alt={room.roomType} />
       </div>
       <div className="room-details">
-        <h2>Room {room._id}</h2>
         <table className="room-table">
           <tbody>
             <tr>

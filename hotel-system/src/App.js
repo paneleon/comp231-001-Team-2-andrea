@@ -1,10 +1,10 @@
-import Home from './Screens/Home';
-import ContactUs from './Screens/ContactUs';
-import ViewRooms from './Screens/ViewRooms';
-import MyProfile from './Screens/MyProfile';
+import Home from './Screens/Home/Home';
+import ContactUs from './Screens/ContactUs/ContactUs';
+import ViewRooms from './Screens/ViewRooms/ViewRooms';
+import MyProfile from './Screens/MyProfile/MyProfile';
 import {BrowserRouter  as Router, Routes, Route} from 'react-router-dom';
-import Payment from './Screens/Payment';
-import BookRoom from './Screens/BookRoom';
+import Payment from './Screens/Payment/Payment';
+import BookRoom from './Screens/BookRoom/BookRoom';
 import 'antd/dist/reset.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 

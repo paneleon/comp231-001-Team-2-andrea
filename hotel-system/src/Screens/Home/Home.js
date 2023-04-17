@@ -1,7 +1,7 @@
-import "../App.css";
 import React from "react";
-import Nav from "../Nav";
-import Footer from "../Footer";
+import Nav from "../../Components/Nav/Nav";
+import Footer from "../../Components/Footer/Footer";
+import './Home.css'
 
 function Home() {
   return (
@@ -42,13 +42,13 @@ function Home() {
                   alt="Room 2"
                 />
                 <div className="card-body">
-                  <h5 className="card-title">Superior Room</h5>
+                  <h5 className="card-title">Single Room</h5>
                   <p className="card-text">
                     This luxurious room features a queen-sized bed, a balcony,
                     and a mini-fridge.
                   </p>
                   <div className="d-flex justify-content-between align-items-center">
-                    <small className="text-muted">Starting from $249/night</small>
+                    <small className="text-muted">Starting from $30/night</small>
                   </div>
                 </div>
               </div>
@@ -67,7 +67,7 @@ function Home() {
                     living room, and a mini-bar.
                   </p>
                   <div className="d-flex justify-content-between align-items-center">
-                    <small className="text-muted">Starting from $399/night</small>
+                    <small className="text-muted">Starting from $70/night</small>
 
                   </div>
                 </div>
@@ -81,13 +81,13 @@ function Home() {
                   alt="Room 4 "
                 />
                 <div className="card-body">
-                  <h5 className="card-title">Family Room</h5>
+                  <h5 className="card-title">Double Room</h5>
                   <p className="card-text">
                     This spacious room features two queen-sized beds and a
                     seating area.
                   </p>
                   <div className="d-flex justify-content-between align-items-center">
-                    <small className="text-muted">Starting from $249/night</small>
+                    <small className="text-muted">Starting from $50/night</small>
                   </div>
                 </div>
               </div>
@@ -118,7 +118,7 @@ function Home() {
                     local vineyards.
                   </p>
                   <div className="d-flex justify-content-between align-items-center">
-                    <small className="text-muted">March 31, 2023</small>
+                    <small className="text-muted">May 31, 2023</small>
                   </div>
                 </div>
               </div>
@@ -137,7 +137,7 @@ function Home() {
                     musicians.
                   </p>
                   <div className="d-flex justify-content-between align-items-center">
-                    <small className="text-muted">April 5, 2023</small>
+                    <small className="text-muted">May 5, 2023</small>
                   </div>
                 </div>
               </div>
@@ -155,7 +155,7 @@ function Home() {
                     Join us for a fun night of trivia and prizes on April 10th.
                   </p>
                   <div className="d-flex justify-content-between align-items-center">
-                    <small className="text-muted">April 10, 2023</small>
+                    <small className="text-muted">May 10, 2023</small>
                   </div>
                 </div>
               </div>
@@ -233,7 +233,7 @@ function Home() {
       </section>
 
       <section className="section-separator">
-        <section id="reviews" className="bg-light">
+        <section id="reviews" className="reviews">
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
