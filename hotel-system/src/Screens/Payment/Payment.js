@@ -19,9 +19,11 @@ function Payment() {
   return (
     <>
       <Nav />
+      <div className="payment-container">
       <form className="paymentform">
         <h2>Type of Card:</h2>
         <label>
+          <div>
           <input
             type="radio"
             name="cardType"
@@ -30,6 +32,8 @@ function Payment() {
             onChange={(e) => setCardType(e.target.value)}
           />
           Visa
+          </div>
+          <div>
           <input
             type="radio"
             name="cardType"
@@ -38,6 +42,7 @@ function Payment() {
             onChange={(e) => setCardType(e.target.value)}
           />
           Mastercard
+          </div>
         </label>
 
         <h2>Card Information:</h2>
@@ -64,11 +69,14 @@ function Payment() {
           <input type="text" name="cvv" value={cvv} onChange={(e) => setCvv(e.target.value)} />
         </label>
         <Link to="/my-profile">
-          <button type="submit" onClick={handleSubmit} className="btn btn-primary">
+          <button type="submit" className="payment-submit-button" nClick={handleSubmit}>
             Confirm Payment
           </button>
         </Link>
+      
       </form>
+      </div>
+      
       <Footer />
     </>
   );
