@@ -13,4 +13,5 @@ This project was made using MERN stack.
 - Download MongoDB Compass to have access to the localhost database
 - Insert the document to see the list of rooms
 
-[rooms.txt](https://github.com/AndreaJDS/comp231-001-Team-2/files/11187439/rooms.txt)
+
+[rooms.txt](https://github.com/AndreaJDS/comp231-001-Team-2/files/11246576/rooms.txt)
