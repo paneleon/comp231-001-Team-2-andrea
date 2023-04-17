@@ -124,22 +124,26 @@ function ViewRooms() {
       <Nav />
       
       {/* Room List */}
-      <div className="container">
-        <div className="row mt-5">
-          {/* filter by date */}
-          <div className="col-md-3">
-            <RangePicker  format="DD-MM-YYYY" onChange={filterByDate} />
-          </div>
+      <div className="viewrooms-roomlist-container">        
+      <div className="row mt-5">
 
           {/* search filter */}
-          <div className="col-md-5">
+          <div className="col-md-4" style={{marginLeft:"30px"}}>
             <input type="text" className="form-control" placeholder="Search Rooms by type or price"
             value={searchKey} onChange={(e) => {setSearchKey(e.target.value)}} onKeyUp={filterBySearch} />
           
           </div>
 
+
+          {/* filter by date */}
+          <div className="col-md-3" style={{marginLeft:"60px"}}>
+            <RangePicker  format="DD-MM-YYYY" onChange={filterByDate} />
+          </div>
+
+
+
            {/* Based on selection */}
-          <div className="col-md-3">
+          <div className="col-md-4" >
             <select className="form-control" value={roomType} onChange={(e)=>{filterByType(e.target.value)}}>
                 <option value="all">All </option>
                 <option value="single">Single </option>

@@ -1,65 +1,17 @@
-/* VIEW ROOM */
 .room-list {
-    text-align: left;
-    margin-left: 50px;
-    margin-top: 20px;
-  }
-  
-  
-  .view-room {
-    margin-bottom: 30px;
-  }
+  text-align: left;
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+
+.view-room {
+  margin-bottom: 30px;
+}
+
+.viewrooms-roomlist-room-container {
+  border: 5px;
+  border-color: black;
+}
 
   
-  
-  /* ROOM.JS */
-
-.room-container {
-    display: flex;
-    margin: 10px 0;
-    align-items:center;
-  }
-  
-  
-  .room-image {
-    flex: 1;
-    margin-right: 10px;
-    margin-bottom: 40px;
-  }
-  
-  .room-image img {
-    width: 500px;
-    margin-top: 40px;
-  }
-  
-  .room-details {
-    flex: 2;
-  }
-  
-  .room-details h2 {
-    margin-top: 0;
-  }
-  
-  .room-details table {
-    border-collapse: collapse;
-    width: auto;
-  }
-  
-  .room-details table td {
-    padding: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  .room-details button {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .room-details button:hover {
-    background-color: #0062cc;
-  }
