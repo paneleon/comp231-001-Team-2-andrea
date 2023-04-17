@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import Nav from "../Components/Nav/Nav";
+import Nav from "../../Components/Nav/Nav";
 import { Link } from "react-router-dom";
-import Footer from "../Components/Footer/Footer";
+import Footer from "../../Components/Footer/Footer";
+import './Payment.css'
 
 function Payment() {
 

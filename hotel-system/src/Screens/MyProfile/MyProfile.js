@@ -1,11 +1,12 @@
-import "../App.css";
+
 import React, { useEffect, useState } from "react";
-import Nav from "../Components/Nav/Nav";
-import Footer from "../Components/Footer/Footer";
-import Loader from "../Components/Loader";
+import Nav from "../../Components/Nav/Nav";
+import Footer from "../../Components/Footer/Footer";
+import Loader from "../../Components/Loader";
 import axios from "axios";
 import { Tabs, Table } from "antd";
 import { useParams, useNavigate } from "react-router-dom";
+import './MyProfile.css'
 
 const { TabPane } = Tabs;
 

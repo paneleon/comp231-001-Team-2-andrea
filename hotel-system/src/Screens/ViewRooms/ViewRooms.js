@@ -1,12 +1,12 @@
-import "../App.css";
 import React, { useEffect, useState } from "react";
-import Nav from "../Components/Nav/Nav";
+import Nav from "../../Components/Nav/Nav";
 import axios from "axios";
-import Room from "./Room";
-import Loader from "../Components/Loader";
-import { DatePicker, Space } from "antd";
+import Room from "../Room/Room";
+import Loader from "../../Components/Loader";
+import { DatePicker } from "antd";
 import moment from "moment";
-import Footer from "../Components/Footer/Footer";
+import Footer from "../../Components/Footer/Footer";
+import './ViewRooms.css'
 
 //added Antd date range picker
 const { RangePicker } = DatePicker;
@@ -15,7 +15,7 @@ function ViewRooms() {
  
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState();
-  const [error, setError] = useState();
+
 
   //adding date values
   const [checkInDate, setCheckInDate] = useState();
@@ -40,7 +40,6 @@ function ViewRooms() {
         setDuplicateRooms(roomData.data);
         setLoading(false);
       } catch (error) {
-        setError(true);
         console.log(error);
         setLoading(false);
       }

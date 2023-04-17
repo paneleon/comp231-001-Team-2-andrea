@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
-import Loader from "../Components/Loader";
+import { useNavigate, useParams } from "react-router-dom";
+import Loader from "../../Components/Loader";
 import moment from "moment";
-import Nav from "../Components/Nav/Nav";
-import Footer from "../Components/Footer/Footer";
+import Nav from "../../Components/Nav/Nav";
+import Footer from "../../Components/Footer/Footer";
+import './BookRoom.css'
 
 function BookRoom() {
   //personal information here
