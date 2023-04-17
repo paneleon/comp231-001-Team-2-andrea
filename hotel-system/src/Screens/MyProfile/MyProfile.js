@@ -179,7 +179,7 @@ function MyBookings({ userId }) {
       key: 'action',
       render: (_text, booking) => (
         booking.status !== "Cancelled" && (
-          <button className="btn btn-primary" onClick={() => {cancelBooking(booking._id, booking.roomid)}}> Cancel Booking</button>
+          <button className='myprofile-submit-button' onClick={() => {cancelBooking(booking._id, booking.roomid)}}> Cancel Booking</button>
         )
       )
       
@@ -202,14 +202,16 @@ function MyBookings({ userId }) {
           <p>
             Send to recipient:
             <input
-              type="text"
+              type="email"
               name="recipient"
               value={recipient}
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
               placeholder="abc@gmail.com"
               onChange={handleRecipientChange}
-            ></input>
+              required
+            />
           </p>
-          <button className="btn btn-primary" value="Submit" onClick={handleSubmit}>
+          <button className='myprofile-submit-button' value="Submit" onClick={handleSubmit}>
             Send
           </button>
         </div>
