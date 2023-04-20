@@ -4,8 +4,7 @@ It allows users to search for available rooms, make reservations, and view their
 
 ### Getting Started:
 To run this project, you will need to have two terminals open. Follow the steps below to get started:
-1. Open a terminal and navigate to the main directory of the project by running:
-cd hotel-system
+1. Open a terminal and navigate to the main directory of the project by running: **cd hotel-system**
 
 2. Install the required dependencies by running: **npm install**
 
